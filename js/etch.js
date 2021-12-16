@@ -1,8 +1,10 @@
 const container = document.querySelector('#container');
 
-function createGrid() {
-    for (let i = 0; i < 16; i++) {
-        for (let j = 0; j < 16; j++) {
+let dimensions = 16;
+
+function createGrid(dimensions) {
+    for (let i = 0; i < dimensions; i++) {
+        for (let j = 0; j < dimensions; j++) {
             let block = document.createElement('div');
             block.setAttribute('class', 'grid-item');
             container.appendChild(block);
@@ -14,4 +16,21 @@ function createGrid() {
     }
 }
 
-createGrid();
+createGrid(dimensions);
+
+function clearGrid() {
+    while (container.firstChild) {
+        container.removeChild(container.firstChild);
+    }
+}
+
+const btn = document.querySelector('#btn');
+btn.addEventListener('click', () => {
+    clearGrid();
+    
+    do {
+        dimensions = prompt("Please Enter New Dimensions:");
+    } while (dimensions > 100);
+
+    createGrid(dimensions);
+});
