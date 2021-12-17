@@ -27,9 +27,9 @@ function clearGrid() {
 const btn = document.querySelector('#btn');
 btn.addEventListener('click', () => {
     clearGrid();
-    
+
     do {
-        dimensions = prompt("Please Enter New Dimensions:");
+        dimensions = prompt("Please Enter New Dimensions (cannot be greater than 100):");
     } while (dimensions > 100);
 
     createGrid(dimensions);
